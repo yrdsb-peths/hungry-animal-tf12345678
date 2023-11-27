@@ -24,6 +24,20 @@ public class Elephant extends Actor
         }
         
         // Eviscerate apple if the Elephant touches it
-        removeTouching(Apple.class);
+        eat();
+    }
+    
+    /**
+     * eat apple and spawn a new one
+     */
+    public void eat()
+    {
+        if(isTouching(Apple.class))
+        {
+            removeTouching(Apple.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.createApple();
+            world.increaseScore();
+        }
     }
 }
