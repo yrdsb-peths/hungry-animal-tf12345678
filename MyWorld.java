@@ -3,13 +3,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class MyWorld here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Timothy
+ * @version 11/24/2023
  */
 public class MyWorld extends World
 {
     public int score = 0;
     Label scoreLabel;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -28,12 +29,18 @@ public class MyWorld extends World
         createApple();
     }
     
+    /**
+     * creates and adds a game over sign on the canvas
+     */
     public void gameOver()
     {
         Label gameOverLabel = new Label("GameOver", 100);
         addObject(gameOverLabel, 300, 200);
     }
     
+    /**
+     * increases the score by one
+     */
     public void increaseScore()
     {
         score ++;
