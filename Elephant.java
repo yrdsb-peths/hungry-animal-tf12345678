@@ -14,8 +14,6 @@ public class Elephant extends Actor
     
     boolean facingRight = true;
     SimpleTimer animationTimer = new SimpleTimer();
-    
-    MyWorld world = (MyWorld) getWorld();
     public Elephant()
     {
         for(int i = 0; i < idle.length; i++)
@@ -70,10 +68,6 @@ public class Elephant extends Actor
         {
             facingRight = true;
             move(3);
-            if(idle[0].getX() > world.getWidth())
-            {
-                
-            }
         }
         
         // Eviscerate apple if the Elephant touches it
