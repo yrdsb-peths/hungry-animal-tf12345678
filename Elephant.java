@@ -16,6 +16,7 @@ public class Elephant extends Actor
         for(int i = 0; i < idle.length; i++)
         {
             idle[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+            idle[i].scale(100, 100);
         }
         setImage(idle[0]);
     }
@@ -32,10 +33,10 @@ public class Elephant extends Actor
         // Add your action code here.
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-1);
+            move(-3);
         }else if(Greenfoot.isKeyDown("right"))
         {
-            move(1);
+            move(3);
         }
         
         // Eviscerate apple if the Elephant touches it
