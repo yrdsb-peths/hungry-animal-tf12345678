@@ -10,7 +10,7 @@ public class TitleScreen extends World
 {
     Label titleLabel = new Label("Hungry Elephant", 70);
     Label instructionLabel = new Label("Eat all the apples!", 60);
-    Label controlLabel1 = new Label("Use arrow keys to move.", 50);
+    Label controlLabel1 = new Label("Use \u2190 and \u2192 keys to move.", 50);
     Label controlLabel2 = new Label("Press space to start", 40);
     /**
      * Constructor for objects of class TitleScreen.
