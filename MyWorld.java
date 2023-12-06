@@ -10,9 +10,9 @@ public class MyWorld extends World
 {
     public int score = 0;
     Label scoreLabel;
-    int level = 1;
+    int level;
     
-    static int lifeCount = 3;
+    static int lifeCount;
     static Label lifeLabel;
     
     Apple apple;
@@ -21,10 +21,12 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MyWorld()
+    public MyWorld(int difficulty)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false);
+        
+        setLevel(difficulty);
         
         Elephant elephant = new Elephant();
         addObject(elephant, 200, 300);
@@ -36,6 +38,23 @@ public class MyWorld extends World
         addObject(lifeLabel, 550, 50);
         
         createApple();
+    }
+    
+    public void setLevel(int difficulty)
+    {
+        if(difficulty == 1)
+        {
+            level = 1;
+            lifeCount = 3;
+        }else if(difficulty == 2)
+        {
+            level = 2;
+            lifeCount = 2;
+        }else if(difficulty == 3)
+        {
+            level = 3;
+            lifeCount = 1;
+        }
     }
     
     /**
