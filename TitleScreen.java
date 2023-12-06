@@ -27,6 +27,9 @@ public class TitleScreen extends World
         prepare();
     }
 
+    /**
+     * starts the game when space is pressed
+     */
     public void act()
     {
         if(Greenfoot.isKeyDown("space"))
@@ -35,6 +38,7 @@ public class TitleScreen extends World
             Greenfoot.setWorld(gameWorld);
         }
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.

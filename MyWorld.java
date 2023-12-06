@@ -12,6 +12,11 @@ public class MyWorld extends World
     Label scoreLabel;
     int level = 1;
     
+    static int lifeCount = 3;
+    static Label lifeLabel;
+    
+    Apple apple;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -26,6 +31,9 @@ public class MyWorld extends World
         
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
+        
+        lifeLabel = new Label(lifeCount, 80);
+        addObject(lifeLabel, 550, 50);
         
         createApple();
     }
@@ -58,10 +66,28 @@ public class MyWorld extends World
      */
     public void createApple()
     {
-        Apple apple = new Apple();
+        apple = new Apple();
         apple.setSpeed(level);
         int x = Greenfoot.getRandomNumber(600);
         int y = 0;
         addObject(apple, x, y);
+    }
+    
+    /**
+     * removes the apple
+     */
+    public void removeApple()
+    {
+        removeObject(apple);
+    }
+    
+    /**
+     * lowers life count by one
+     */
+    public static int decreaseLife()
+    {
+        lifeCount --;
+        lifeLabel.setValue(lifeCount);
+        return lifeCount;
     }
 }

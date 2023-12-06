@@ -24,11 +24,22 @@ public class Apple extends Actor
         MyWorld world = (MyWorld) getWorld();
         if(getY() >= world.getHeight())
         {
-            world.gameOver();
-            world.removeObject(this);
+            world.removeApple();
+            if(MyWorld.decreaseLife() == 0)
+            {
+                world.gameOver();
+                world.removeObject(this);
+            }
+            else
+            {
+                world.createApple();
+            }
         }
     }
     
+    /**
+     * sets the speed of the falling apple
+     */
     public void setSpeed(int spd)
     {
         speed = spd;
