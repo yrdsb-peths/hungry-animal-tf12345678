@@ -37,6 +37,9 @@ public class Apple extends Actor
         }
     }
     
+    /**
+     * sets the speed of the falling apple
+     */
     public void setSpeed(int spd)
     {
         speed = spd;

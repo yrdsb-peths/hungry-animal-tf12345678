@@ -12,7 +12,7 @@ public class MyWorld extends World
     Label scoreLabel;
     int level = 1;
     
-    static int life = 3;
+    static int lifeCount = 3;
     static Label lifeLabel;
     
     Apple apple;
@@ -32,7 +32,7 @@ public class MyWorld extends World
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
         
-        lifeLabel = new Label(life, 80);
+        lifeLabel = new Label(lifeCount, 80);
         addObject(lifeLabel, 550, 50);
         
         createApple();
@@ -73,15 +73,21 @@ public class MyWorld extends World
         addObject(apple, x, y);
     }
     
+    /**
+     * removes the apple
+     */
     public void removeApple()
     {
         removeObject(apple);
     }
     
+    /**
+     * lowers life count by one
+     */
     public static int decreaseLife()
     {
-        life --;
-        lifeLabel.setValue(life);
-        return life;
+        lifeCount --;
+        lifeLabel.setValue(lifeCount);
+        return lifeCount;
     }
 }

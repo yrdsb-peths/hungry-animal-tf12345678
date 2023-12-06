@@ -14,6 +14,10 @@ public class Elephant extends Actor
     
     boolean facingRight = true;
     SimpleTimer animationTimer = new SimpleTimer();
+    
+    /**
+     * sets the elephant sprites
+     */
     public Elephant()
     {
         for(int i = 0; i < idle.length; i++)
@@ -36,6 +40,9 @@ public class Elephant extends Actor
     }
     
     int imageIndex = 0;
+    /**
+     * animates the elephant using the sprites
+     */
     public void animateElephant()
     {
         if(animationTimer.millisElapsed() < 100)
@@ -57,6 +64,9 @@ public class Elephant extends Actor
         
     }
     
+    /**
+     * moves and animates the elephant and allows it to eat
+     */
     public void act()
     {
         // Add your action code here.
