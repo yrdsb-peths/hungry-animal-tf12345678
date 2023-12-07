@@ -14,7 +14,7 @@ public class Elephant extends Actor
     
     boolean facingRight = true;
     SimpleTimer animationTimer = new SimpleTimer();
-    
+    SimpleTimer dashTimer = new SimpleTimer();
     /**
      * sets the elephant sprites
      */
@@ -79,7 +79,17 @@ public class Elephant extends Actor
             facingRight = true;
             move(3);
         }
-        
+        //speed blitz dash
+        else if(Greenfoot.isKeyDown("space")){
+            if (dashTimer.millisElapsed() > 5000){
+                if(facingRight){
+                    move(100);
+                } else{
+                    move(-100);
+                }
+            }
+            dashTimer.mark();
+        }
         // Eviscerate apple if the Elephant touches it
         eat();
         animateElephant();

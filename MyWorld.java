@@ -34,8 +34,8 @@ public class MyWorld extends World
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
         
-        lifeLabel = new Label(lifeCount, 80);
-        addObject(lifeLabel, 550, 50);
+        lifeLabel = new Label("lives: " + lifeCount, 80);
+        addObject(lifeLabel, 400, 50);
         
         createApple();
     }
