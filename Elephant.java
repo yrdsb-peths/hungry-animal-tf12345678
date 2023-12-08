@@ -69,15 +69,18 @@ public class Elephant extends Actor
      */
     public void act()
     {
-        // Add your action code here.
-        if(Greenfoot.isKeyDown("left"))
+        int moveVelocity = 3;
+        if(Greenfoot.isKeyDown("shift")){
+            moveVelocity *= 2;
+        }
+        if(Greenfoot.isKeyDown("left") && getX() > 5)
         {
             facingRight = false;
-            move(-3);
-        }else if(Greenfoot.isKeyDown("right"))
+            move(-moveVelocity);
+        }else if(Greenfoot.isKeyDown("right") && getX() < 595)
         {
             facingRight = true;
-            move(3);
+            move(moveVelocity);
         }
         
         // Eviscerate apple if the Elephant touches it

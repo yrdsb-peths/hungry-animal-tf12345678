@@ -9,14 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     public int score = 0;
-    Label scoreLabel;
-    int level;
-    
+    private int level;
+    private boolean gameover = false; 
+
     static int lifeCount;
     static Label lifeLabel;
-    
+
     Apple apple;
-    
+    Label scoreLabel;
+    Elephant elephant;
+    Label gameoverLabel = new Label("Press space to return", 30);
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -25,21 +28,33 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false);
-        
+
         setLevel(difficulty);
-        
-        Elephant elephant = new Elephant();
+
+        elephant = new Elephant();
         addObject(elephant, 200, 300);
-        
+
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 50, 50);
-        
+
         lifeLabel = new Label(lifeCount, 80);
         addObject(lifeLabel, 550, 50);
-        
+
         createApple();
     }
-    
+
+    public void act(){
+
+        if(gameover){
+            addObject(gameoverLabel, getWidth()/2, getHeight()/2+100);
+            if(Greenfoot.isKeyDown("space")){
+                clearObjs();
+                TitleScreen world = new TitleScreen();
+                Greenfoot.setWorld(world);
+            }
+        }
+    }
+
     public void setLevel(int difficulty)
     {
         if(difficulty == 1)
@@ -56,7 +71,7 @@ public class MyWorld extends World
             lifeCount = 1;
         }
     }
-    
+
     /**
      * creates and adds a game over sign on the canvas
      */
@@ -64,8 +79,9 @@ public class MyWorld extends World
     {
         Label gameOverLabel = new Label("GameOver", 100);
         addObject(gameOverLabel, 300, 200);
+        gameover = true;
     }
-    
+
     /**
      * increases the score by one
      */
@@ -73,13 +89,13 @@ public class MyWorld extends World
     {
         score ++;
         scoreLabel.setValue(score);
-        
+
         if(score % 5 == 0)
         {
             level ++;
         }
     }
-    
+
     /**
      * randomly create apples at the top of the screen
      */
@@ -91,7 +107,7 @@ public class MyWorld extends World
         int y = 0;
         addObject(apple, x, y);
     }
-    
+
     /**
      * removes the apple
      */
@@ -99,7 +115,7 @@ public class MyWorld extends World
     {
         removeObject(apple);
     }
-    
+
     /**
      * lowers life count by one
      */
@@ -108,5 +124,13 @@ public class MyWorld extends World
         lifeCount --;
         lifeLabel.setValue(lifeCount);
         return lifeCount;
+    }
+
+    private void clearObjs(){
+        apple = null;
+        scoreLabel = null;
+        elephant = null;
+        lifeLabel = null;
+        gameoverLabel = null;
     }
 }
